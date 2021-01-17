@@ -1,0 +1,68 @@
+body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+
+form .control-label.required:after {
+    position: absolute;
+    right: 6px;
+    display: inline-block;
+    content: '*';
+    color: red;
+    font-weight: bold;
+}
+
+form .checkbox label.required:after {
+    margin-left: 6px;
+    display: inline-block;
+    content: '*';
+    color: red;
+    font-weight: bold;
+}
+
+.jumbotron {
+    padding: 30px 0;
+}
+
+.science-thumb,
+.publication-thumb {
+    margin-top: 40px;
+}
+
+.science-thumb:first-child,
+.publication-thumb:first-child {
+    margin-top: 0;
+}
+
+.science-thumb > div,
+.publication-thumb > div,
+.publish-thumb > div {
+    border-left: 4px solid #ffffff;
+    padding-left: 16px;
+}
+
+.science-thumb > h1,
+.publication-thumb > h1,
+.publish-thumb > h1 {
+    position: relative;
+    left: -3px;
+}
+
+.science-thumb > h2,
+.publication-thumb > h2,
+.publish-thumb > h2 {
+    position: relative;
+    left: -1px;
+}
+
+.science-thumb > div {
+    border-left-color: #549595;
+}
+
+.publication-thumb > div {
+    border-left-color: #9473b4;
+}
+
+.publish-thumb > div {
+    border-left-color: #b47677;
+}

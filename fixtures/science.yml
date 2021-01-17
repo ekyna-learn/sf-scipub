@@ -1,0 +1,22 @@
+App\Entity\Science:
+    science_1:
+        title: Physique
+        description: <sentences(4, true)>
+    science_2:
+        title: Chimie
+        description: <sentences(4, true)>
+    science_3:
+        title: Biologie
+        description: <sentences(4, true)>
+    science_4:
+        title: Géologie
+        description: <sentences(4, true)>
+    science_5:
+        title: Mathématiques
+        description: <sentences(4, true)>
+    science_6:
+        title: Sociologie
+        description: <sentences(4, true)>
+    science_7:
+        title: Économie
+        description: <sentences(4, true)>

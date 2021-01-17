@@ -1,0 +1,9 @@
+App\Entity\Publication:
+    publication_{1..32}:
+        science: '@science_*'
+        title: <sentence(7, true)>
+        author: <name()>
+        description: <sentences(4, true)>
+        content: <html()>
+        publishedAt: <dateTimeBetween('-1 year', 'now')>
+        validated: <boolean(90)>

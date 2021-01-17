@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="/favicon.ico">
+
+    <title>SciPub - Publications scientifiques</title>
+
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/ie10-viewport-bug-workaround.css" rel="stylesheet">
+    <link href="css/styles.css" rel="stylesheet">
+
+    <!--[if lt IE 9]>
+    <script src="js/html5shiv.min.js"></script>
+    <script src="js/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <!-- Lien vers la page d'accueil -->
+            <a class="navbar-brand" href="#">SciPub</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li>
+                    <!-- Lien vers la page sciences -->
+                    <a href="#">
+                        Sciences
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- Messages flash -->
+
+<!-- DEBUT Contenu -->
+<div class="jumbotron">
+    <div class="container">
+        <h1>SciPub</h1>
+        <p>La nouvelle plate-forme de publication pour les scientiques !</p>
+        <p>
+            <!-- Lien vers la page publier -->
+            <a href="#" class="btn btn-lg btn-primary">
+                Publier vos travaux &raquo;
+            </a>
+        </p>
+    </div>
+</div>
+
+<div class="container">
+    <h2>Denières publications</h2>
+    <hr>
+
+    <!-- 3 dernières publications validées (par date de publication) -->
+
+    <div class="publication-thumb">
+        <h3><!-- titre publication --></h3>
+        <div>
+            <p>
+                Publié par <strong><!-- auteur publication --></strong>,
+                le <em><!-- date publication --></em>.
+            </p>
+            <p>
+                <!-- description -->
+            </p>
+            <p>
+                <!-- Lien vers le détail de la publication -->
+                <a href="#"
+                   class="btn btn-sm btn-default">
+                    Lire la publication
+                </a>
+            </p>
+        </div>
+    </div>
+
+</div>
+<!-- FIN Contenu -->
+
+<script src="js/ie10-viewport-bug-workaround.js"></script>
+
+</body>
+</html>
