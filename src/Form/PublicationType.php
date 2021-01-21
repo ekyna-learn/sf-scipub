@@ -17,13 +17,13 @@ class PublicationType extends AbstractType
     {
         $builder
             ->add('science', EntityType::class, [
-                'label' => 'Science',
-                'class' => Science::class,
-                'query_builder' => function(ScienceRepository $repository) {
+                'label'         => 'Science',
+                'class'         => Science::class,
+                'query_builder' => function (ScienceRepository $repository) {
                     return $repository
                         ->createQueryBuilder('s')
                         ->addOrderBy('s.title', 'ASC');
-                }
+                },
             ])
             ->add('title', Type\TextType::class, [
                 'label' => 'Titre',
@@ -36,6 +36,7 @@ class PublicationType extends AbstractType
             ])
             ->add('content', Type\TextareaType::class, [
                 'label' => 'Contenu',
+                'required' => false, // Prevent TinyMCE bug :(
             ]);
 
         if (!$options['admin']) {
@@ -44,7 +45,8 @@ class PublicationType extends AbstractType
 
         $builder
             ->add('publishedAt', Type\DateType::class, [
-                'label' => 'Date de publication',
+                'label'  => 'Date de publication',
+                'widget' => 'single_text',
             ])
             ->add('validated', Type\CheckboxType::class, [
                 'label' => 'Validée',

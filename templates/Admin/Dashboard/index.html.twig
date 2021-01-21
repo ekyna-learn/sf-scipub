@@ -1,0 +1,14 @@
+{% extends "Admin/base.html.twig" %}
+
+{% block body %}
+    <div class="container">
+        <h1>Tableau de bord</h1>
+        <hr>
+        <h3>Publications en attente de modération</h3>
+        {% include 'Admin/Publication/_list.html.twig' %}
+
+        <h3>Commentaires en attente de modération</h3>
+        {% include 'Admin/Comment/_list.html.twig' %}
+
+    </div>
+{% endblock %}

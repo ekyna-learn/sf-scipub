@@ -1,0 +1,16 @@
+{% extends "Admin/base.html.twig" %}
+
+{% block title %}Nouvelle science{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <h1>Créer une nouvelle science</h1>
+        <hr>
+        <p class="text-right">
+            <a href="{{ path('admin_science_index') }}" class="btn btn-sm btn-default">
+                Retour à la liste
+            </a>
+        </p>
+        {{ form(form) }}
+    </div>
+{% endblock %}

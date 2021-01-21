@@ -1,0 +1,78 @@
+{% extends "Admin/base.html.twig" %}
+
+{% block title %}Détail de la publication{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <h1>Détail de la publication <small>&laquo; {{ publication.title }} &raquo;</small></h1>
+        <hr>
+        <p class="text-right">
+            <a href="{{ path('admin_publication_edit', {'id': publication.id}) }}" class="btn btn-sm btn-warning">
+                Modifier
+            </a>
+            <a href="{{ path('admin_publication_delete', {'id': publication.id}) }}" class="btn btn-sm btn-danger">
+                Supprimer
+            </a>
+            <a href="{{ path('admin_publication_index') }}" class="btn btn-sm btn-default">
+                Retour à la liste
+            </a>
+            <a href="{{ path('admin_publication_new') }}" class="btn btn-sm btn-success">
+                Créer une nouvelle publication
+            </a>
+        </p>
+        <div class="form-horizontal">
+            <div class="form-group">
+                <label class="col-sm-2 control-label">Science</label>
+                <div class="col-sm-10">
+                    <p class="form-control-static">
+                        <a href="{{ path('admin_science_show', {'id': publication.science.id }) }}">
+                            {{ publication.science.title }}
+                        </a>
+                    </p>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">Titre</label>
+                <div class="col-sm-10">
+                    <p class="form-control-static">{{ publication.title }}</p>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">Description</label>
+                <div class="col-sm-10">
+                    <p class="form-control-static">{{ publication.description }}</p>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">Contenu</label>
+                <div class="col-sm-10">
+                    <p class="form-control-static">{{ publication.content|raw }}</p>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">Date de publication</label>
+                <div class="col-sm-10">
+                    <p class="form-control-static">{{ publication.publishedAt|date('d/m/Y à H:i') }}</p>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">Validée</label>
+                <div class="col-sm-10">
+                    <p class="form-control-static">
+                        {% if publication.validated %}
+                            <span class="label label-success">Oui</span>
+                        {% else %}
+                            <span class="label label-danger">Non</span>
+                        {% endif %}
+                    </p>
+                </div>
+            </div>
+        </div>
+        <p class="text-right">
+            <a href="{{ path('admin_comment_new', {'publicationId': publication.id}) }}"
+               class="btn btn-sm btn-success">
+                Ajouter un commentaire
+            </a>
+        </p>
+    </div>
+{% endblock %}

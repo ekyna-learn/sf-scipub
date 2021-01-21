@@ -56,4 +56,23 @@ class PublicationRepository extends ServiceEntityRepository
             ->setParameter('science', $science)
             ->getResult();
     }
+
+    /**
+     * Returns the publications that needs moderation.
+     *
+     * @param int $limit
+     *
+     * @return Publication[]
+     */
+    public function findNotValidated(int $limit = 3): array
+    {
+        $qb = $this->createQueryBuilder('p');
+
+        return $qb
+            ->andWhere($qb->expr()->eq('p.validated', ':validated'))
+            ->getQuery()
+            ->setParameter('validated', false)
+            ->setMaxResults($limit)
+            ->getResult();
+    }
 }

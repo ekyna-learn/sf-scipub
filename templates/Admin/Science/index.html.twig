@@ -1,0 +1,47 @@
+{% extends "Admin/base.html.twig" %}
+
+{% block title %}Liste des sciences{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <h1>Listes des sciences</h1>
+        <hr>
+        <p class="text-right">
+            <a href="{{ path('admin_science_new') }}" class="btn btn-sm btn-success">
+                Créer une nouvelle science
+            </a>
+        </p>
+        <table class="table table-striped table-hover">
+            <thead>
+            <tr>
+                <th>Title</th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for science in sciences %}
+                <tr>
+                    <td>
+                        <a href="{{ path('admin_science_show', {'id': science.id}) }}">
+                            {{ science.title }}
+                        </a>
+                    </td>
+                    <td class="text-right">
+                        <a class="btn btn-xs btn-warning"
+                           href="{{ path('admin_science_edit', {'id': science.id}) }}">
+                            Modifier</a>
+                        <a class="btn btn-xs btn-danger"
+                           href="{{ path('admin_science_delete', {'id': science.id}) }}">
+                            Supprimer
+                        </a>
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="4">Aucune science enregistré</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}

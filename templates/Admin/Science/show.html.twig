@@ -1,0 +1,38 @@
+{% extends "Admin/base.html.twig" %}
+
+{% block title %}Détail de la science{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <h1>Détail de la science <small>&laquo; {{ science.title }} &raquo;</small></h1>
+        <hr>
+        <p class="text-right">
+            <a href="{{ path('admin_science_edit', {'id': science.id}) }}" class="btn btn-sm btn-warning">
+                Modifier
+            </a>
+            <a href="{{ path('admin_science_delete', {'id': science.id}) }}" class="btn btn-sm btn-danger">
+                Supprimer
+            </a>
+            <a href="{{ path('admin_science_index') }}" class="btn btn-sm btn-default">
+                Retour à la liste
+            </a>
+            <a href="{{ path('admin_science_new') }}" class="btn btn-sm btn-success">
+                Créer une nouvelle science
+            </a>
+        </p>
+        <div class="form-horizontal">
+            <div class="form-group">
+                <label class="col-sm-2 control-label">Titre</label>
+                <div class="col-sm-10">
+                    <p class="form-control-static">{{ science.title }}</p>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">Description</label>
+                <div class="col-sm-10">
+                    <p class="form-control-static">{{ science.description }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

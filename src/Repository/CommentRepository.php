@@ -34,4 +34,23 @@ class CommentRepository extends ServiceEntityRepository
             ])
             ->getResult();
     }
+
+    /**
+     * Returns the comments that needs moderation.
+     *
+     * @param int $limit
+     *
+     * @return Comment[]
+     */
+    public function findNotValidated(int $limit = 3): array
+    {
+        $qb = $this->createQueryBuilder('c');
+
+        return $qb
+            ->andWhere($qb->expr()->eq('c.validated', ':validated'))
+            ->getQuery()
+            ->setParameter('validated', false)
+            ->setMaxResults($limit)
+            ->getResult();
+    }
 }

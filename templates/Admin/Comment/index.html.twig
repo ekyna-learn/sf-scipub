@@ -1,0 +1,17 @@
+{% extends "Admin/base.html.twig" %}
+
+{% block title %}Liste des commentaires{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <h1>Listes des commentaires</h1>
+        <hr>
+        <p class="text-right">
+            <a href="{{ path('admin_comment_new') }}" class="btn btn-sm btn-success">
+                Créer un nouveau commentaire
+            </a>
+        </p>
+        <h3>Commentaires en attente de validation</h3>
+        {% include 'Admin/Comment/_list.html.twig' %}
+    </div>
+{% endblock %}

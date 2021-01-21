@@ -1,0 +1,32 @@
+<table class="table table-striped table-hover">
+    <thead>
+    <tr>
+        <th>Title</th>
+        <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for comment in comments %}
+        <tr>
+            <td>
+                <a href="{{ path('admin_comment_show', {'id': comment.id}) }}">
+                    {{ comment.pseudo }}
+                </a>
+            </td>
+            <td class="text-right">
+                <a class="btn btn-xs btn-warning"
+                   href="{{ path('admin_comment_edit', {'id': comment.id}) }}">
+                    Modifier</a>
+                <a class="btn btn-xs btn-danger"
+                   href="{{ path('admin_comment_delete', {'id': comment.id}) }}">
+                    Supprimer
+                </a>
+            </td>
+        </tr>
+    {% else %}
+        <tr>
+            <td colspan="4">Aucune commentaire enregistré</td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>

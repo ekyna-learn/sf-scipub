@@ -1,0 +1,60 @@
+{% extends "Admin/base.html.twig" %}
+
+{% block title %}Détail du commentaire{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <h1>Détail du commentaire <small>&laquo; {{ comment.pseudo }} &raquo;</small></h1>
+        <hr>
+        <p class="text-right">
+            <a href="{{ path('admin_comment_edit', {'id': comment.id}) }}" class="btn btn-sm btn-warning">
+                Modifier
+            </a>
+            <a href="{{ path('admin_comment_delete', {'id': comment.id}) }}" class="btn btn-sm btn-danger">
+                Supprimer
+            </a>
+            <a href="{{ path('admin_comment_index') }}" class="btn btn-sm btn-default">
+                Retour à la liste
+            </a>
+            <a href="{{ path('admin_comment_new') }}" class="btn btn-sm btn-success">
+                Créer une nouvelle comment
+            </a>
+        </p>
+        <div class="form-horizontal">
+            <div class="form-group">
+                <label class="col-sm-2 control-label">Publication</label>
+                <div class="col-sm-10">
+                    <p class="form-control-static">
+                        <a href="{{ path('admin_publication_show', {'id': comment.publication.id}) }}">
+                            {{ comment.publication.title }}
+                        </a>
+                    </p>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">Pseudo</label>
+                <div class="col-sm-10">
+                    <p class="form-control-static">{{ comment.pseudo }}</p>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">Message</label>
+                <div class="col-sm-10">
+                    <p class="form-control-static">{{ comment.message }}</p>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">Validée</label>
+                <div class="col-sm-10">
+                    <p class="form-control-static">
+                        {% if comment.validated %}
+                            <span class="label label-success">Oui</span>
+                        {% else %}
+                            <span class="label label-danger">Non</span>
+                        {% endif %}
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

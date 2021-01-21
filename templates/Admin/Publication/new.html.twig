@@ -1,0 +1,21 @@
+{% extends "Admin/base.html.twig" %}
+
+{% block title %}Créer une nouvelle publication{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <h1>Créer une nouvelle publication</h1>
+        <hr>
+        <p class="text-right">
+            <a href="{{ path('admin_publication_index') }}" class="btn btn-sm btn-default">
+                Retour à la liste
+            </a>
+        </p>
+        {{ form(form) }}
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    {% include "Fragment/tinymce.html.twig" %}
+{% endblock %}

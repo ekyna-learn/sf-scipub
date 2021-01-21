@@ -20,3 +20,8 @@
 
     </div>
 {% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    {% include "Fragment/tinymce.html.twig" %}
+{% endblock %}

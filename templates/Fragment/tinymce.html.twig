@@ -1,0 +1,11 @@
+<script src="https://cdn.tiny.cloud/1/odba9thbd5i2zoxp1x65z1ukm6zaya0a8t6tvfi1yptzeays/tinymce/5/tinymce.min.js"
+        referrerpolicy="origin"></script>
+<script>
+    tinymce.init({
+        selector: '#{{ editor|default('publication_content') }}',
+        menubar: false,
+        toolbar: [
+            'undo redo | styleselect | bold italic | alignleft aligncenter alignright'
+        ]
+    });
+</script>

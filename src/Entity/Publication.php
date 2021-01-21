@@ -72,6 +72,11 @@ class Publication
         $this->validated = false;
     }
 
+    public function __toString()
+    {
+        return $this->title;
+    }
+
     public function getId(): ?int
     {
         return $this->id;
