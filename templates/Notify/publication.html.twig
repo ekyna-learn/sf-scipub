@@ -1,0 +1,22 @@
+{% extends "email.html.twig" %}
+
+{% block subject %}
+    Nouvelle publication : {{ publication.title }}
+{% endblock %}
+
+{% block body %}
+    <p>
+        Une nouvelle publication a été soumise par l'auteur
+        <strong>{{ publication.author }}</strong> dans la section
+        <strong>{{ publication.science.title }}</strong>.
+    </p>
+    <p>
+        Vous pouvez procéder à la modération de cette publication
+        dans votre espace d'administration.
+    </p>
+    <p style="text-align: center">
+        <a href="#" class="button"> {# TODO {{ path('') }} #}
+            Modérer la publication
+        </a>
+    </p>
+{% endblock %}

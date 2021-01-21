@@ -7,6 +7,7 @@ use App\Entity\Science;
 use App\Form\PublicationType;
 use App\Repository\PublicationRepository;
 use App\Repository\ScienceRepository;
+use App\Service\Notifier;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\HttpFoundation\Request;
@@ -114,6 +115,7 @@ class PublicationController extends AbstractController
      * Publish action.
      *
      * @param Request $request
+     * @param Notifier $notifier
      *
      * @return Response
      *
@@ -123,7 +125,7 @@ class PublicationController extends AbstractController
      *     methods={"GET", "POST"}
      * )
      */
-    public function publish(Request $request): Response
+    public function publish(Request $request, Notifier $notifier): Response
     {
         $publication = new Publication();
 
@@ -142,6 +144,8 @@ class PublicationController extends AbstractController
             $manager = $this->getDoctrine()->getManager();
             $manager->persist($publication);
             $manager->flush();
+
+            $notifier->notify($publication);
 
             $this->addFlash(
                 'success',
