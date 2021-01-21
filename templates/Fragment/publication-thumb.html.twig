@@ -1,0 +1,27 @@
+<div class="publication-thumb">
+    {% set href = path('publication_publication', {
+        'scienceId': publication.science.id,
+        'publicationId': publication.id
+    }) %}
+    <h3>
+        <a href="{{ href }}">
+            {{ publication.title }}
+        </a>
+    </h3>
+    <div>
+        <p>
+            Publié par <strong>{{ publication.author }}</strong>,
+            le <em>{{ publication.publishedAt|date('d/m/Y à H:i') }}</em>.
+        </p>
+        <p>
+            {{ publication.description }}
+        </p>
+        <p>
+            <!-- Lien vers le détail de la publication -->
+            <a href="{{ href }}"
+               class="btn btn-sm btn-default">
+                Lire la publication
+            </a>
+        </p>
+    </div>
+</div>

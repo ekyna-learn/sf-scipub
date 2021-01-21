@@ -1,0 +1,41 @@
+{% extends "base.html.twig" %}
+
+{% block title %}
+    {{ science.title }}
+{% endblock %}
+
+{% block body %}
+    <div class="jumbotron">
+        <div class="container">
+
+            <!-- Science -->
+
+            <div class="science-thumb">
+                <h1>{{ science.title }}</h1>
+                <div>
+                    <p>
+                        {{ science.description }}
+                    </p>
+                    <p>
+                        <!-- Lien vers la liste des sciences -->
+                        <a href="{{ path('publication_sciences') }}"
+                           class="btn btn-sm btn-default">
+                            Retour à la liste des sciences
+                        </a>
+                    </p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="container">
+        <h2>Publications de la science &laquo;{{ science.title }}&raquo;</h2>
+        <hr>
+
+        <!-- Liste des publications validées pour cette science -->
+        {% for publication in publications %}
+            {% include 'Fragment/publication-thumb.html.twig' %}
+        {% endfor %}
+    </div>
+{% endblock %}

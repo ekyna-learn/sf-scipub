@@ -1,0 +1,44 @@
+{% extends "base.html.twig" %}
+
+{% block title %}
+    Sciences
+{% endblock %}
+
+{% block body %}
+    <div class="jumbotron">
+        <div class="container">
+            <h1>Sciences</h1>
+        </div>
+    </div>
+
+    <div class="container">
+        <h2>Liste des sciences</h2>
+        <hr>
+
+        <!-- Liste des sciences -->
+
+        {% for science in sciences %}
+        <div class="science-thumb">
+            {% set href = path('publication_science', {'scienceId': science.id}) %}
+            <h3>
+                <a href="{{ href }}">
+                    {{ science.title }}
+                </a>
+            </h3>
+            <div>
+                <p>
+                    {{ science.description }}
+                </p>
+                <p>
+                    <!-- Lien vers la page détail science -->
+                    <a href="{{ href }}"
+                       class="btn btn-sm btn-default">
+                        Voir les publications de la science &laquo;{{ science.title }}&raquo;
+                    </a>
+                </p>
+            </div>
+        </div>
+        {% endfor %}
+
+    </div>
+{% endblock %}

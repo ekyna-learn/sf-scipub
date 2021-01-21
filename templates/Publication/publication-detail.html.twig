@@ -1,0 +1,41 @@
+{% extends "base.html.twig" %}
+
+{% block title %}
+    {{ science.title }} - {{ publication.title }}
+{% endblock %}
+
+{% block body %}
+<div class="jumbotron">
+    <div class="container">
+
+        <div class="publication-thumb">
+            <h2>{{ science.title }}</h2>
+            <h1 style="font-size: 48px">{{ publication.title }}</h1>
+            <div>
+                <p>
+                    Publié par <strong>{{ publication.author }}</strong>,
+                    le <em>{{ publication.publishedAt|date('d/m/Y à H:i') }}</em>.
+                </p>
+                <p>
+                    {{ publication.description }}
+                </p>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<div class="container">
+    <div>
+        {{ publication.content|raw }}
+    </div>
+    <hr>
+    <p>
+        <!-- Lien vers la page détail science -->
+        <a href="{{ path('publication_science', {'scienceId': science.id}) }}"
+           class="btn btn-sm btn-default">
+            Retour à liste des publications de la science &laquo;<!-- titre science -->&raquo;
+        </a>
+    </p>
+</div>
+{% endblock %}

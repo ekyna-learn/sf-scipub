@@ -1,0 +1,28 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+    <div class="jumbotron">
+        <div class="container">
+            <h1>SciPub</h1>
+            <p>La nouvelle plate-forme de publication pour les scientiques !</p>
+            <p>
+                <!-- Lien vers la page publier -->
+                <a href="{{ path('publication_publish') }}" class="btn btn-lg btn-primary">
+                    Publier vos travaux &raquo;
+                </a>
+            </p>
+        </div>
+    </div>
+
+    <div class="container">
+        <h2>Denières publications</h2>
+        <hr>
+
+        <!-- 3 dernières publications validées (par date de publication) -->
+
+        {% for publication in publications %}
+            {% include 'Fragment/publication-thumb.html.twig' %}
+        {% endfor %}
+
+    </div>
+{% endblock %}
