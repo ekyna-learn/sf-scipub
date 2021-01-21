@@ -50,10 +50,8 @@ class PublicationController extends AbstractController
      */
     public function scienceList(): Response
     {
-        $sciences = $this->getScienceRepository()->findBy([], ['title' => 'ASC']);
-
         return $this->render('Publication/science-list.html.twig', [
-            'sciences' => $sciences,
+            'sciences' => $this->getScienceList(),
         ]);
     }
 
@@ -160,6 +158,18 @@ class PublicationController extends AbstractController
     }
 
     /**
+     * Renders the side menu.
+     *
+     * @return Response
+     */
+    public function sideMenu(): Response
+    {
+        return $this->render('Fragment/sciences.html.twig', [
+            'sciences' => $this->getScienceList(),
+        ]);
+    }
+
+    /**
      * Finds the science from the given request.
      *
      * @param Request $request
@@ -197,6 +207,16 @@ class PublicationController extends AbstractController
         }
 
         return $publication;
+    }
+
+    /**
+     * Returns the science list.
+     *
+     * @return Science[]
+     */
+    private function getScienceList(): array
+    {
+        return $this->getScienceRepository()->findBy([], ['title' => 'ASC']);
     }
 
     /**

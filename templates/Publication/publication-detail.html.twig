@@ -1,31 +1,32 @@
-{% extends "base.html.twig" %}
+{% extends "sided.html.twig" %}
 
 {% block title %}
     {{ science.title }} - {{ publication.title }}
 {% endblock %}
 
-{% block body %}
-<div class="jumbotron">
-    <div class="container">
+{% block jumbotron %}
+    <div class="jumbotron">
+        <div class="container">
 
-        <div class="publication-thumb">
-            <h2>{{ science.title }}</h2>
-            <h1 style="font-size: 48px">{{ publication.title }}</h1>
-            <div>
-                <p>
-                    Publié par <strong>{{ publication.author }}</strong>,
-                    le <em>{{ publication.publishedAt|date('d/m/Y à H:i') }}</em>.
-                </p>
-                <p>
-                    {{ publication.description }}
-                </p>
+            <div class="publication-thumb">
+                <h2>{{ science.title }}</h2>
+                <h1 style="font-size: 48px">{{ publication.title }}</h1>
+                <div>
+                    <p>
+                        Publié par <strong>{{ publication.author }}</strong>,
+                        le <em>{{ publication.publishedAt|date('d/m/Y à H:i') }}</em>.
+                    </p>
+                    <p>
+                        {{ publication.description }}
+                    </p>
+                </div>
             </div>
+
         </div>
-
     </div>
-</div>
+{% endblock %}
 
-<div class="container">
+{% block main %}
     <div>
         {{ publication.content|raw }}
     </div>
@@ -37,5 +38,4 @@
             Retour à liste des publications de la science &laquo;<!-- titre science -->&raquo;
         </a>
     </p>
-</div>
 {% endblock %}

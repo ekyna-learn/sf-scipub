@@ -1,0 +1,7 @@
+<div class="list-group">
+    {% for science in sciences %}
+    <a class="list-group-item" href="{{ path('publication_science', {'scienceId': science.id}) }}">
+        {{  science.title }}
+    </a>
+    {% endfor %}
+</div>
