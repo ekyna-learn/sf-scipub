@@ -38,4 +38,26 @@
             Retour à liste des publications de la science &laquo;<!-- titre science -->&raquo;
         </a>
     </p>
+    <h3>Commentaires</h3>
+    <hr>
+    {% for comment in comments %}
+        <div class="media">
+            <div class="media-left">
+                <a href="#">
+                    <img class="media-object" src="{{ asset('image/comment.svg') }}" alt="Comment">
+                </a>
+            </div>
+            <div class="media-body">
+                <h4 class="media-heading">{{ comment.pseudo }}</h4>
+                {{ comment.message }}
+            </div>
+        </div>
+    {% else %}
+        <p>
+            <em>Aucun commentaire enregistré</em>
+        </p>
+    {% endfor %}
+    <hr>
+    <h3>Ajouter un commentaire</h3>
+    {{ form(form) }}
 {% endblock %}

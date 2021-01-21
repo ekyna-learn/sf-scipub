@@ -2,9 +2,12 @@
 
 namespace App\Controller;
 
+use App\Entity\Comment;
 use App\Entity\Publication;
 use App\Entity\Science;
+use App\Form\CommentType;
 use App\Form\PublicationType;
+use App\Repository\CommentRepository;
 use App\Repository\PublicationRepository;
 use App\Repository\ScienceRepository;
 use App\Service\Notifier;
@@ -93,7 +96,7 @@ class PublicationController extends AbstractController
      *     "/sciences/{scienceId}/{publicationId}",
      *     name="publication_publication",
      *     requirements={"scienceId": "\d+", "publicationId": "\d+"},
-     *     methods={"GET"}
+     *     methods={"GET", "POST"}
      * )
      */
     public function publicationDetail(Request $request): Response
@@ -105,16 +108,53 @@ class PublicationController extends AbstractController
             throw $this->createNotFoundException();
         }
 
+        $comment = new Comment();
+        $comment->setPublication($publication);
+
+        $form = $this->createForm(CommentType::class, $comment);
+
+        $form->add('submit', SubmitType::class, [
+            'label' => 'Publier',
+            'attr'  => [
+                'class' => 'btn-primary',
+            ],
+        ]);
+
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $manager = $this->getDoctrine()->getManager();
+            $manager->persist($comment);
+            $manager->flush();
+
+            $this->addFlash(
+                'success',
+                'Votre commentaire a bien été enregistré et sera soumis ' .
+                'à modération dans les plus brefs délais.'
+            );
+
+            return $this->redirectToRoute('publication_publication', [
+                'scienceId'     => $science->getId(),
+                'publicationId' => $publication->getId(),
+            ]);
+        }
+
+        $comments = $this
+            ->getCommentRepository()
+            ->findByPublication($publication);
+
         return $this->render('Publication/publication-detail.html.twig', [
             'science'     => $science,
             'publication' => $publication,
+            'form'        => $form->createView(),
+            'comments'    => $comments,
         ]);
     }
 
     /**
      * Publish action.
      *
-     * @param Request $request
+     * @param Request  $request
      * @param Notifier $notifier
      *
      * @return Response
@@ -241,5 +281,15 @@ class PublicationController extends AbstractController
     private function getPublicationRepository(): PublicationRepository
     {
         return $this->getDoctrine()->getRepository(Publication::class);
+    }
+
+    /**
+     * Returns the comment repository.
+     *
+     * @return CommentRepository
+     */
+    private function getCommentRepository(): CommentRepository
+    {
+        return $this->getDoctrine()->getRepository(Comment::class);
     }
 }
