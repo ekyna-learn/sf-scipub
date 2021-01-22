@@ -31,7 +31,6 @@ services:
             default:
                 aliases:
                     - nginx
-#                    - ${VIRTUAL_HOST}
 
     php:
         container_name: ${PROJECT_NAME}_php
@@ -42,8 +41,6 @@ services:
         build:
             context: ../
             dockerfile: docker/php/dev/Dockerfile
-        env_file:
-            - ../.env.local
         volumes:
             - ../bin:/var/www/bin
             - ../config:/var/www/config
@@ -56,6 +53,7 @@ services:
             - ../var:/var/www/var
             - ../vendor:/var/www/vendor
             - ../.env:/var/www/.env
+            - ../.env.local:/var/www/.env.local
             - ../composer.json:/var/www/composer.json
             - ../composer.lock:/var/www/composer.lock
             - ../phpunit.xml.dist:/var/www/phpunit.xml.dist
