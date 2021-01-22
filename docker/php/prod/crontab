@@ -1,0 +1,1 @@
+* * * * * php /var/www/bin/console app:test --no-debug --no-interaction
